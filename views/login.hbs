@@ -13,9 +13,17 @@
         <input type="submit">
     </form>
     <table>
-        <tr>
-            <td></td>
-        </tr>
-    </table>
+        {{#data}}
+         <form action="/login/getLogin" method="post">
+         <input type="email" name="email" id="" value="{{id}}"> <br>
+        <input type="text" name="pass" id="" placeholder="pass"><br>
+        <input type="text" name="email" id="" placeholder="email"> <br>
+        <input type="password" name="pass" id="" placeholder="pass"><br>
+        <input type="submit">
+        </form>
+        <br>
+        
+        {{/data}}
+
 </body>
 </html>

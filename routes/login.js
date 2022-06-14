@@ -3,10 +3,10 @@ var router = express.Router();
 var mysql = require('mysql');
 
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "1234",
-  database: "test"
+  host: "easylearning.guru",
+  user: "kcc_student",
+  password: "Kccitm.edu.in1",
+  database: "kccStudent"
 });
 
 router.get('/', function(req, res, next) {
@@ -19,7 +19,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/getLogin', function(req, res, next) {
     console.log(req.body)
-    var sql = "INSERT INTO `yojana` (`email`, `pass`) \
+    var sql = "INSERT INTO `Yojana` (`email`, `pass`) \
     VALUES ('"+req.body.email+"', '"+req.body.pass+"');"
     console.log(sql)
    con.connect()
@@ -34,6 +34,6 @@ router.post('/getLogin', function(req, res, next) {
       //   console.log(result);
       // });
 res.json({"Name":req.body})
-});
+ });
 
 module.exports = router;
