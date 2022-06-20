@@ -1,13 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var _ = require('underscore');
 
-var con = mysql.createConnection({
-  host: "easylearning.guru",
-  user: "kcc_student",
-  password: "Kccitm.edu.in1",
-  database: "kccStudent"
-});
+//var .con = mysql.createConnection({
+ //})
+
 
 router.get('/', function(req, res, next) {
     con.connect(function(err) {
@@ -17,15 +15,16 @@ router.get('/', function(req, res, next) {
     res.render('login')
 });
 
-router.post('/getLogin', function(req, res, next) {
-    console.log(req.body)
-    var sql = "INSERT INTO `Yojana` (`email`, `pass`) \
-    VALUES ('"+req.body.email+"', '"+req.body.pass+"');"
-    console.log(sql)
-   con.connect()
-      con.query(sql, function (err, result) {
-        if (err) throw err;
-        console.log(result);
+router.get('/getLogin', function(req, res, next) {
+    console.log(_.max([1,2,3])
+    )
+    con.query("select * from YOJANA", function (err, result) {
+      if (err) throw err;
+      console.log(_.map(result, function(data) {return data.id}));
+    
+     // con.query(sql, function (err, result) {
+        //if (err) throw err;
+        //console.log(result);
 
       });
       // var sql1 = "select * from `qqq`"
@@ -56,3 +55,8 @@ router.get('/read', function (req, res) {
   });
 });
 module.exports = router;
+
+
+
+
+
